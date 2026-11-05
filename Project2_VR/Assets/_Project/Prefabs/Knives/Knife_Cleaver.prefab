@@ -109,8 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaratieBlade.Gameplay.KnifeController
   hand: 0
   controllerAnchor: {fileID: 0}
-  gripPosition: {x: 0, y: -0.01, z: -0.02}
-  gripRotation: {x: -60, y: 0, z: 0}
+  gripPosition: {x: 0, y: -0.045, z: -0.04}
+  gripRotation: {x: -50, y: 0, z: 0}
 --- !u!114 &3510007405332734914
 MonoBehaviour:
   m_ObjectHideFlags: 0
