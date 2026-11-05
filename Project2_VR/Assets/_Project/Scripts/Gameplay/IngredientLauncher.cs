@@ -84,6 +84,11 @@ namespace BaratieBlade.Gameplay
             IsLaunching = false;
         }
 
+        public void SetLaunchInterval(Vector2 intervalRange)
+        {
+            launchIntervalRange = intervalRange;
+        }
+
         public void RecycleAll()
         {
             // Iterate backwards because finishing an ingredient removes it from the list.
