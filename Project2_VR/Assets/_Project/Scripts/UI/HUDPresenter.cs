@@ -12,7 +12,10 @@ namespace BaratieBlade.UI
         [SerializeField] private TMP_Text scoreLabel;
         [SerializeField] private TMP_Text countdownLabel;
 
+        [SerializeField] private float goDuration = 0.8f;
+
         private int shownSeconds = -1;
+        private float goTimer;
 
         private void OnEnable()
         {
@@ -49,7 +52,13 @@ namespace BaratieBlade.UI
 
             if (countdownLabel != null)
             {
-                countdownLabel.gameObject.SetActive(state == GameState.Countdown);
+                bool showLabel = state == GameState.Countdown || state == GameState.Playing;
+                countdownLabel.gameObject.SetActive(showLabel);
+                if (state == GameState.Playing)
+                {
+                    countdownLabel.SetText("GO!");
+                    goTimer = goDuration;
+                }
             }
 
             shownSeconds = -1;
@@ -62,6 +71,15 @@ namespace BaratieBlade.UI
             if (state != GameState.Countdown && state != GameState.Playing)
             {
                 return;
+            }
+
+            if (goTimer > 0f)
+            {
+                goTimer -= Time.deltaTime;
+                if (goTimer <= 0f && countdownLabel != null)
+                {
+                    countdownLabel.gameObject.SetActive(false);
+                }
             }
 
             int seconds = Mathf.CeilToInt(gameManager.TimeRemaining);
